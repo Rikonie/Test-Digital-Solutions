@@ -2,7 +2,7 @@ import {Address} from "./address";
 import {Company} from "./company";
 
 export class User {
-    id: number;
+    id: string;
     name: string;
     username: string;
     email: string;
@@ -11,7 +11,7 @@ export class User {
     website: string;
     company: Company;
 
-    constructor(id: number, name: string, username: string, email: string, address: Address, phone: string,
+    constructor(id: string, name: string, username: string, email: string, address: Address, phone: string,
                 website: string, company: Company) {
         this.id = id;
         this.name = name;

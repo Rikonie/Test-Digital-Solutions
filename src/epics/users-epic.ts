@@ -7,7 +7,7 @@ import {RootEpic} from "./root-epic";
 
 const usersPageOpened: RootEpic = (action$, _, {}) =>
     action$.pipe(
-        filter(isActionOf(Actions.user.userOpened)),
+        filter(isActionOf(Actions.user.usersPageOpened)),
         map((action) => {
             return  Actions.user.getUsers.request({})
         })

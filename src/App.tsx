@@ -1,13 +1,16 @@
 import React from 'react';
 import {Provider} from "react-redux";
 import {RootConfig} from "./root/configure-root";
-import {UserPage} from "./user-page";
+import {BrowserRouter} from "react-router-dom";
+import {MainRouter} from "./routers/main-router";
 
 
 const App: React.FC<RootConfig> = ({store}) => {
     return (
         <Provider store={store}>
-            <UserPage/>
+            <BrowserRouter basename={'/'}>
+                <MainRouter/>
+            </BrowserRouter>
         </Provider>
     );
 };

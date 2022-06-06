@@ -5,6 +5,8 @@ import {createEpicMiddleware} from "redux-observable";
 import {Services} from "../services/services";
 import {rootEpics} from "../epics/epics";
 import {UsersService} from "../services/users-service";
+import {PostsService} from "../services/posts-service";
+import {CommentsService} from "../services/comments-service";
 
 export interface RootConfig {
     store: Store<RootState, RootAction>;
@@ -13,6 +15,8 @@ export interface RootConfig {
 export function configureRoot(): RootConfig {
     const httpClient = new HttpClient("https://jsonplaceholder.typicode.com");
     const usersService = new UsersService(httpClient);
+    const postsService = new PostsService(httpClient);
+    const commentsService =  new CommentsService(httpClient);
 
     const epicMiddleware = createEpicMiddleware<RootAction,
         RootAction,
@@ -20,7 +24,9 @@ export function configureRoot(): RootConfig {
         Services>({
         dependencies: {
             httpClient: httpClient,
-            usersService: usersService
+            usersService: usersService,
+            postsService: postsService,
+            commentsService: commentsService
         }
     });
     const store = createStore<RootState, RootAction, unknown, unknown>(
