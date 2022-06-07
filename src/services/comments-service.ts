@@ -2,7 +2,8 @@ import {HttpClient} from "./api/http-client";
 import {Comment} from "../classes/comment";
 
 export interface ICommentsService {
-    getInfoComments(postId: string): Promise<Comment[]>
+    getInfoComments(postId: string): Promise<Comment[]>;
+    createNewComment(comment: Comment, postId: string): Promise<any>;
 }
 
 export class CommentsService implements ICommentsService {
@@ -15,4 +16,11 @@ export class CommentsService implements ICommentsService {
             return r;
         })
     }
+
+    createNewComment(comment: Comment, postId: string): Promise<any> {
+        return  this.httpClient.post<any>('/comments?postId='+ postId, comment).then((r:any)=>{
+            return r;
+        })
+    }
+
 }

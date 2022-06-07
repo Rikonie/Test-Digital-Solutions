@@ -13,6 +13,16 @@ const commentsLoad: RootEpic = (action$, _, {commentsService}) =>
         ))
     );
 
+const createNewComment: RootEpic = (action$, _, {commentsService}) =>
+    action$.pipe(
+        filter(isActionOf(Actions.comment.createComment.request)),
+        switchMap((action)=> from(commentsService.createNewComment(action.payload.comment, action.payload.postId)).pipe(
+            map(r=>Actions.comment.createComment.success(r)),
+            catchError(x=> of(Actions.comment.createComment.failure(x)))
+        ))
+    );
+
 export const commentsEpics = [
-    commentsLoad
+    commentsLoad,
+    createNewComment
 ];

@@ -7,7 +7,13 @@ const commentsInfo = createReducer<any>(null)
         return action.payload;
     });
 
+const createNewCommentStatus = createReducer<any>(null)
+    .handleAction(Actions.comment.createComment.success, (state:any, action:any) => {
+        return "Успешно";
+    });
+
 export const commentsReducer = () =>
     combineReducers({
         commentsInfo,
+        createNewCommentStatus
     });

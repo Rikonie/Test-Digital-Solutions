@@ -25,6 +25,12 @@ const getComments = createAsyncAction(
     '@@get-comments/failure'
 )<string, Comment[], Error>();
 
+const createComment = createAsyncAction(
+    '@@create-comment/request',
+    '@@create-comment/success',
+    '@@create-comment/failure'
+)<{comment:Comment, postId: string}, {}, Error>();
+
 export const Actions = {
     user: {
         usersPageOpened,
@@ -38,6 +44,7 @@ export const Actions = {
         userInfoPageOpened
     },
     comment:{
-        getComments
+        getComments,
+        createComment
     }
 };
