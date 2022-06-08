@@ -38,39 +38,48 @@ export const PostInfoPage = () => {
         setBodyComment(event.target.value);
     };
 
-    const userChange = (event:any) =>{
+    const userChange = (event: any) => {
         setNameUserCreatedComment(event.target.value)
     };
 
-    const emailChange = (event:any) =>{
+    const emailChange = (event: any) => {
         setUserEmail(event.target.value)
     };
 
     const createNewComment = () => {
-        const newComment = new Comment (postId,"", nameUserCreatedComment, userEmail as string, bodyComment as string)
+        const newComment = new Comment(postId, "", nameUserCreatedComment, userEmail as string, bodyComment as string)
         dispatch(Actions.comment.createComment.request({comment: newComment, postId: postId}))
     };
 
     return (
         <div>
-            <div>{post?.title}</div>
-            <div>{post?.body}</div>
-            <div>Комментарии:
+            <div>
+                <div>Пост:</div>
+                <div>{post?.title}</div>
+                <div>{post?.body}</div>
+            </div>
+            <div>
+                <div>Комментарии</div>
                 {comments ? comments?.map((i: Comment, key: number) => {
                     return (
                         <div key={key}>
+                            <div>Пользователь:</div>
                             <div>{i.name}</div>
                             <div>{i.email}</div>
+                            <div>Комментарий:</div>
                             <div>{i.body}</div>
                         </div>
                     )
                 }) : "Загрузка"}
             </div>
-            <input value={nameUserCreatedComment} onChange={userChange}/>
-            <input value={userEmail} onChange={emailChange}/>
-            <input value={bodyComment} onChange={commentChange}/>
+            <div>
+            <div>Оставить комментарий:</div>
+            <input value={nameUserCreatedComment} placeholder={"Имя пользователя"} onChange={userChange}/>
+            <input value={userEmail} placeholder={"Email"} onChange={emailChange}/>
+            <input value={bodyComment} placeholder={"Написать комментарий"} onChange={commentChange}/>
             <button onClick={createNewComment}>Добавить комментарий</button>
-            <div>{resultCreateNewComment? resultCreateNewComment:""}</div>
+            <div>{resultCreateNewComment ? resultCreateNewComment : ""}</div>
+            </div>
         </div>
     );
 };

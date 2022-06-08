@@ -52,9 +52,12 @@ export const UserInfoPage = () => {
                         <div>
                             {userInfo.company.bs}
                         </div>
+                        <button>Написать сообщение</button>
+                        <button>Предложить сходить на концерт</button>
                     </div> : "Загрузка"}
             </div>
             <div>
+                <div>Посты</div>
                 {postsInfo ? postsInfo.map((i: Post, key: number) => {
                     return (
                         <div key={key}>
@@ -66,6 +69,15 @@ export const UserInfoPage = () => {
                         </div>
                     )
                 }) : "Загрузка"}
+            </div>
+            <div>
+                <div>Публикации</div>
+                <div/>
+                <div/>
+                <div/>
+                <div/>
+                <div/>
+                <div/>
             </div>
         </div>
     );
