@@ -27,16 +27,22 @@ export const UsersPage = () => {
 
     return (
         <div>
-            <div>
+            <div className={styles.imageContainer}>
                 <img src={center} alt={""} className={styles.imageCenter}/>
-                <div>Twenty One Pilots</div>
-                <div>22.02.23 в 21:00</div>
-                <button className={styles.buttonArrowLeft}><img src={arrowLeft} alt={""}/></button>
-                <button>Купить билет</button>
-                <button className={styles.buttonArrowLeft}><img src={arrowRight} alt={""}/></button>
+                <div className={styles.title}>
+                    <div>Twenty One Pilots</div>
+                    <div className={styles.dateTitle}>22.02.23 в 21:00</div>
+                </div>
+                <div className={styles.containerButtonBuy}>
+                    <button className={styles.buttonArrowLeft}><img src={arrowLeft} alt={""}/></button>
+                    <button className={styles.buttonBuyTicket}>Купить билет</button>
+                    <button className={styles.buttonArrowRight}><img src={arrowRight} alt={""}/></button>
+                </div>
             </div>
-            <div>Купили билеты</div>
-            <div>923/1000</div>
+            <div className={styles.boughtTickets}>
+                <div className={styles.boughtTicketsTitle}>Купили билеты</div>
+                <div className={styles.boughtTicketsCount}>932/<span style={{color: "#DADADA"}}>1000</span></div>
+            </div>
             <div className={styles.container}>
                 {users ?
                     users?.map((i: any, key: number) => {
@@ -54,27 +60,32 @@ export const UsersPage = () => {
                     : ""}
             </div>
             <div className={styles.containerAbout}>
-                <img src={line} alt={""}/>
+
+                <img src={line} alt={""} style={{marginLeft:"61px"}}/>
                 <img src={blackLine} alt={""}/>
                 <div>
-                    <div>О площадке</div>
-                    <div>Современная площадка для проведения концертов и других мероприятий любой сложности.</div>
-                    <div>Мы предоставляем всю необходимую для организаторов инфраструктуру и готовые решения под
-                        все основные задачи любого события, а также современное оборудование, соответствующее самым
+                    <div className={styles.aboutTitle}>О площадке</div>
+                    <div className={styles.aboutBody1}>Современная площадка для проведения <br/> концертов и других
+                        мероприятий любой <br/> сложности.
+                    </div>
+                    <div className={styles.aboutBody2}>Мы предоставляем всю необходимую для <br/> организаторов
+                        инфраструктуру и готовые <br/> решения под все основные задачи любого <br/>
+                        события, а также современное <br/> оборудование, соответствующее самым <br/>
                         высоким мировым стандартам.
                     </div>
                 </div>
-                <div>
-                    <div>Оставить заявку на проведение концерта</div>
-                    <input placeholder={"Расскажите о вашем предложении"}/>
-                    <button>Отправить</button>
+                <div className={styles.containerSubmit}>
+                    <div className={styles.submitText}>Оставить заявку на проведение концерта</div>
+                    <input className={styles.submitInput} placeholder={"Расскажите о вашем предложении"}/>
+                    <button className={styles.buttonSubmit}>Отправить</button>
                 </div>
             </div>
             <div className={styles.containerAbout}>
                 <div>О группе</div>
                 <div>Twenty One Pilots — американский дуэт из Колумбуса, штат Огайо.
                     Группа образовалась в 2009 году и на данный момент состоит из Тайлера Джозефа и Джоша Дана.
-                    Коллектив самостоятельно выпустил два альбома: Twenty One Pilots в 2009 и Regional at Best в 2011.
+                    Коллектив самостоятельно выпустил два альбома: Twenty One Pilots в 2009 и Regional at Best в
+                    2011.
                 </div>
             </div>
         </div>
